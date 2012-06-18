@@ -1,0 +1,202 @@
+{
+    "flashicon": "icons\/Binary_Light.png",
+    "doc_url": {
+        "doc_language": 1,
+        "doc_manual": 1,
+        "doc_version": 1,
+        "doc_platform": 0,
+        "doc_page": "devices" 
+    },
+    "DisplayStatus": {
+		"Service": "urn:futzle-com:serviceId:CombinationSwitch1",
+		"Variable": "Status",
+		"MinValue": "0",
+		"MaxValue": "1"
+    },
+    "inScene": "1",
+    "x": 2,
+    "y": 4,
+    "Tabs": [
+        {
+            "Label": {
+                "lang_tag": "tabname_control",
+                "text": "Control"
+            },
+            "Position": "0",
+            "TabType": "flash",
+            "SceneGroup": [
+              {
+                "id": "1",
+                "top": "0",
+                "left": "0",
+                "x": "1",
+                "y": "4"
+              }
+            ],
+            "ControlGroup": [
+                {
+                    "id": "1",
+                    "isSingle": "0",
+                    "scenegroup": "1"
+                }
+            ],
+            "Control": [
+                {
+                    "ControlGroup": "1",
+                    "ControlType": "variable",
+                    "top": 1,
+                    "left": 0,
+                    "Display": {
+			"Service": "urn:futzle-com:serviceId:CombinationSwitch1",
+			"Variable": "Label",
+                        "Top": 20,
+                        "Left": 20,
+                        "Width": 80,
+                        "Height": 20
+                    }
+                },
+                {
+                    "ControlGroup": "1",
+                    "ControlType": "button",
+                    "top": 2,
+                    "left": 0,
+                    "Label": {
+                        "lang_tag": "cmd_set",
+                        "text": "Trigger"
+                    },
+                    "Display": {
+                        "Top": 20,
+                        "Left": 20,
+                        "Width": 80,
+                        "Height": 20
+                    },
+                    "Command": {
+                        "Service": "urn:futzle-com:serviceId:CombinationSwitch1",
+                        "Action": "Trigger",
+                        "Parameters": [
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "Label": {
+                "lang_tag": "configure",
+                "text": "Configure"
+            },
+            "Position": "2",
+            "TabType": "javascript",
+            "ScriptName": "J_CombinationSwitch1.js",
+            "Function": "configuration" 
+        },
+        {
+            "Label": {
+                "lang_tag": "advanced",
+                "text": "Advanced" 
+            },
+            "Position": "3",
+            "TabType": "javascript",
+            "ScriptName": "shared.js",
+            "Function": "advanced_device" 
+        },
+        {
+            "Label": {
+                "lang_tag": "logs",
+                "text": "Logs" 
+            },
+            "Position": "4",
+            "TabType": "javascript",
+            "ScriptName": "shared.js",
+            "Function": "device_logs" 
+        },
+        {
+            "Label": {
+                "lang_tag": "notifications",
+                "text": "Notifications" 
+            },
+            "Position": "5",
+            "TabType": "javascript",
+            "ScriptName": "shared.js",
+            "Function": "device_notifications" 
+        }
+    ],
+    "DeviceType": "urn:schemas-futzle-com:device:CombinationSwitch:1",
+    "eventList2": [
+	{
+		"id": 1,
+		"label": {
+                "lang_tag": "switch_status_changes",
+                "text": "Virtual switch status changes"
+            },
+			"serviceId": "urn:futzle-com:serviceId:CombinationSwitch1",
+			"argumentList": [
+				{
+					"id": 1,
+					"dataType": "boolean",
+					"defaultValue": "1",
+					"allowedValueList": [
+						{
+                            "Off": "0",
+                            "HumanFriendlyText": {
+                                "lang_tag": "hft_switch_turns_off",
+                                "text": "Switch turns off"
+                            }
+                        },
+                        {
+                            "On": "1",
+                            "HumanFriendlyText": {
+                                "lang_tag": "hft_switch_turns_on",
+                                "text": "Switch turns on"
+                            }
+                        }
+					],
+					"name": "Status",
+					"comparisson": "=",
+					"prefix": {
+                        "lang_tag": "new_state",
+                        "text": "New state"
+                    },
+					"suffix": {}
+				}
+			]
+		},
+        {
+            "id": 2,
+            "label": {
+                "lang_tag": "triggered_while_on",
+                "text": "Triggered while virtual switch is on"
+            },
+            "serviceId": "urn:futzle-com:serviceId:CombinationSwitch1",
+            "serviceStateTable": {
+                "Trigger": {
+                    "value": "1",
+                    "comparisson": "="
+                },
+                "Status": {
+                    "value": "1",
+                    "comparisson": "="
+                }
+            }
+        },
+        {
+            "id": 3,
+            "label": {
+                "lang_tag": "triggered_while_off",
+                "text": "Triggered while virtual switch is off"
+            },
+            "serviceId": "urn:futzle-com:serviceId:CombinationSwitch1",
+            "serviceStateTable": {
+                "Trigger": {
+                    "value": "1",
+                    "comparisson": "="
+                },
+                "Status": {
+                    "value": "0",
+                    "comparisson": "="
+                }
+            }
+        }
+    ]
+}
+
+

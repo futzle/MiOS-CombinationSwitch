@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<implementation>
+  <settings>
+  </settings>
+  <functions>
+function initialize (lul_device)
+  if (package.path:find ("/etc/cmh-ludl/?.lua;/etc/cmh-lu/?.lua", 1, true) == nil) then
+    package.path = package.path .. ";/etc/cmh-ludl/?.lua;/etc/cmh-lu/?.lua"
+  end
+  package.loaded.L_CombinationSwitch1 = nil
+  combi_plugin = require ("L_CombinationSwitch1")
+  watch_callback = combi_plugin.watch_callback
+  combi_plugin.require_proxy = require_proxy
+  callback_handler = combi_plugin.callback_handler
+  return combi_plugin.initialize (lul_device)
+end
+  </functions>
+  <startup>initialize</startup>
+  <actionList>
+    <action>
+      <serviceId>urn:futzle-com:serviceId:CombinationSwitch1</serviceId>
+      <name>Trigger</name>
+      <run>return combi_plugin.trigger()</run>
+    </action>
+  </actionList>
+
+
+</implementation>
+

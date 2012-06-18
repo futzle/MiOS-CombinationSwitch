@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<scpd xmlns="urn:schemas-upnp-org:service-1-0">
+  <specVersion>
+    <major>1</major>
+    <minor>0</minor>
+  </specVersion>
+  <serviceStateTable>
+    <stateVariable sendEvents="yes">
+      <name>Votes</name>
+      <dataType>ui4</dataType>
+      <defaultValue>0</defaultValue>
+      <shortCode>votes</shortCode>
+    </stateVariable>
+    <stateVariable sendEvents="no">
+      <name>Threshold</name>
+      <dataType>ui4</dataType>
+      <defaultValue>0</defaultValue>
+      <shortCode>quorum</shortCode>
+    </stateVariable>
+    <stateVariable sendEvents="yes">
+      <name>Status</name>
+      <dataType>boolean</dataType>
+      <defaultValue>0</defaultValue>
+      <shortCode>status</shortCode>
+    </stateVariable>
+  </serviceStateTable>
+  <actionList>
+    <action>
+    <name>Trigger</name>
+      <argumentList>
+      </argumentList>
+    </action>
+  </actionList>
+</scpd>
+
