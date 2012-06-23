@@ -7,6 +7,10 @@
         "doc_platform": 0,
         "doc_page": "devices" 
     },
+    "state_icons": [
+        "Binary_Light_0.png",
+        "Binary_Light_100.png"
+    ],
     "DisplayStatus": {
 		"Service": "urn:futzle-com:serviceId:CombinationSwitch1",
 		"Variable": "Status",
