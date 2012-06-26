@@ -74,8 +74,8 @@ function loadHandlers()
 									template = template,
 								})) then
 								handlers[pluginName] = plugin
+								debug("Loaded plugin: L_CombinationSwitch1Plugin_" .. pluginName .. ".lua implements " .. handlers[pluginName].name())
 							end
-							debug("Loaded plugin: L_CombinationSwitch1Plugin_" .. pluginName .. ".lua implements " .. handlers[pluginName].name())
 						else
 							debug("Ignoring error while loading plugin " .. pluginName .. ": " .. error)
 						end
