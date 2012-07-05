@@ -38,7 +38,7 @@ function configureState(combinationDeviceId, index)
 end
 
 function configureSelect(combinationDeviceId, index, state)
-	local selectedDevice, selectedLow, selectedHigh = state:match("(%d+)=(%d*),(%d*)")
+	local selectedDevice, selectedLow, selectedHigh = state:match("(%d+)=(%-?%d*),(%-?%d*)")
 	local supportedDevices = MAIN.getDevicesWithService(combinationDeviceId, POWER_SERVICE_ID)
 
 	local deviceSelectElement = MAIN.htmlSelectDevice(supportedDevices, selectedDevice, combinationDeviceId, MAIN.pluginId, index .. INDEX_POWER_DEVICE_ID)
