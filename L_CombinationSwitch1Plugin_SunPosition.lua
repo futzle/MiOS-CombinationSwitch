@@ -70,9 +70,9 @@ function configureSelect(combinationDeviceId, index, state)
 			INDEX_SUNPOSITION_VALUE_LOW = INDEX_SUNPOSITION_VALUE_LOW,
 			INDEX_SUNPOSITION_VALUE_HIGH = INDEX_SUNPOSITION_VALUE_HIGH,
 			ALTITUDE_SELECTED = (selectedVariable == "Altitude" and "selected='selected'" or ""),
-			AZIMUTH_SELECTED = (selectedVariable == "Azimuth" and "selected='selected'" or ""),
+			AZIMUTH_SELECTED = (selectedVariable == "Azimuth360" and "selected='selected'" or ""),
 			DECLINATION_SELECTED = (selectedVariable == "Declination" and "selected='selected'" or ""),
-			RIGHTASCENSION_SELECTED = (selectedVariable == "RightAscension" and "selected='selected'" or ""),
+			RIGHTASCENSION_SELECTED = (selectedVariable == "RightAscension360" and "selected='selected'" or ""),
 			selectedLow = selectedLow,
 			selectedHigh = selectedHigh,
 		})
