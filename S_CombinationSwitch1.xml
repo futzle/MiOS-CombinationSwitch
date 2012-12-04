@@ -5,6 +5,12 @@
     <minor>0</minor>
   </specVersion>
   <serviceStateTable>
+    <stateVariable sendEvents="no">
+      <name>WatchCount</name>
+      <dataType>ui4</dataType>
+      <defaultValue>0</defaultValue>
+      <shortCode>watch</shortCode>
+    </stateVariable>
     <stateVariable sendEvents="yes">
       <name>Votes</name>
       <dataType>ui4</dataType>
@@ -22,6 +28,12 @@
       <dataType>boolean</dataType>
       <defaultValue>0</defaultValue>
       <shortCode>status</shortCode>
+    </stateVariable>
+    <stateVariable sendEvents="no">
+      <name>Label</name>
+      <dataType>string</dataType>
+      <defaultValue>0/0</defaultValue>
+      <shortCode>label</shortCode>
     </stateVariable>
   </serviceStateTable>
   <actionList>
