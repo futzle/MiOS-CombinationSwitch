@@ -45,8 +45,8 @@ function configureSelect(combinationDeviceId, index, state)
 
 	local result = MAIN.template([[
 		~deviceSelectElement~ is in range
-		<input type="text" size="4" value="~selectedLow~" onchange='warnSave(); set_device_state(~combinationDeviceId~, "~combinationServiceId~", "~index~~INDEX_LIGHT_SENSOR_VALUE_LOW~", $F(this), 0);'>% to
-		<input type="text" size="4" value="~selectedHigh~" onchange='warnSave(); set_device_state(~combinationDeviceId~, "~combinationServiceId~", "~index~~INDEX_LIGHT_SENSOR_VALUE_HIGH~", $F(this), 0);'>% 
+		<input type="text" size="4" value="~selectedLow~" onchange='warnSave(); set_device_state(~combinationDeviceId~, "~combinationServiceId~", "~index~~INDEX_LIGHT_SENSOR_VALUE_LOW~", $F(this), 0);'> to
+		<input type="text" size="4" value="~selectedHigh~" onchange='warnSave(); set_device_state(~combinationDeviceId~, "~combinationServiceId~", "~index~~INDEX_LIGHT_SENSOR_VALUE_HIGH~", $F(this), 0);'> 
 		]], {
 			deviceSelectElement = deviceSelectElement,
 			combinationDeviceId = combinationDeviceId,

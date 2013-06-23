@@ -66,7 +66,7 @@
                     "left": 0,
                     "Label": {
                         "lang_tag": "cmd_set",
-                        "text": "Trigger"
+                        "text": "Poke"
                     },
                     "Display": {
                         "Top": 20,
@@ -168,7 +168,7 @@
             "id": 2,
             "label": {
                 "lang_tag": "triggered_while_on",
-                "text": "Triggered while virtual switch is on"
+                "text": "Poked while virtual switch is on"
             },
             "serviceId": "urn:futzle-com:serviceId:CombinationSwitch1",
             "serviceStateTable": {
@@ -186,7 +186,7 @@
             "id": 3,
             "label": {
                 "lang_tag": "triggered_while_off",
-                "text": "Triggered while virtual switch is off"
+                "text": "Poked while virtual switch is off"
             },
             "serviceId": "urn:futzle-com:serviceId:CombinationSwitch1",
             "serviceStateTable": {
