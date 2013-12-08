@@ -78,5 +78,5 @@ function count(combinationDeviceId, index)
 	local watchDeviceId = luup.variable_get(MAIN.pluginId, index .. INDEX_SWITCH_DEVICE_ID, combinationDeviceId)
 	local watchDeviceIdNum = tonumber(watchDeviceId)
 	local watchVariableValue = luup.variable_get(MAIN.pluginId, index .. INDEX_SWITCH_VALUE, DEVICE_ID)
-	return luup.variable_get(PARTITION_SERVICE_ID, PARTITION_VARIABLE_STATUS, watchDeviceIdNum) == (tonumber(watchVariableValue) and "Armed" or "Disarmed") and 1 or 0
+	return luup.variable_get(PARTITION_SERVICE_ID, PARTITION_VARIABLE_STATUS, watchDeviceIdNum) == (tonumber(watchVariableValue) ~= 0 and "Armed" or "Disarmed") and 1 or 0
 end
