@@ -1,5 +1,20 @@
 var pluginList;
 
+var entityMap = { 
+ "&": "&amp;", 
+ "<": "&lt;", 
+ ">": "&gt;", 
+ '"': '&quot;', 
+ "'": '&#39;', 
+ "/": '&#x2F;' 
+}; 
+
+function escapeHtml(string) { 
+  return String(string).replace(/[&<>"'\/]/g, function (s) { 
+    return entityMap[s]; 
+  }); 
+}
+
 function configuration(deviceId)
 {
 	var html = '';
@@ -7,7 +22,7 @@ function configuration(deviceId)
 	html += '<div id="itemList"></div>';
 
 	html += '<div><p>Switch is on when ';
-	html += '<input type="text" size="3" onchange="warnSave(); set_device_state(' + deviceId + ', \'urn:futzle-com:serviceId:CombinationSwitch1\', \'Threshold\', $F(this), 0)" value="';
+	html += '<input type="text" size="3" onchange="warnSave(); set_device_state(' + deviceId + ', \'urn:futzle-com:serviceId:CombinationSwitch1\', \'Threshold\', jQuery(this).val(), 0)" value="';
 	var watchCount = get_device_state(deviceId, "urn:futzle-com:serviceId:CombinationSwitch1", "Threshold", 0);
 	if (watchCount == undefined) { watchCount = 1; }
 	html += watchCount + '"/> or more watched items are true.</p></div>';
@@ -27,7 +42,7 @@ function configuration(deviceId)
 			pluginList = response.responseText.evalJSON();
 			if (pluginList == undefined)
 			{
-				$('itemList').innerHTML = 'Failed to get plugins';
+				jQuery('#itemList').html('Failed to get plugins');
 			}
 			else
 			{
@@ -55,21 +70,21 @@ function configuration(deviceId)
 				html += selectPlugin(deviceId, next, count);
 				html += '</tr></table>';
 
-				$('itemList').innerHTML = html;
+				jQuery('#itemList').html(html);
 
 				// Populate existing settings.
 				for (i = 1; i <= count; i++)
 				{
-					if ($("pluginDetail" + i) != undefined)
+					if (jQuery("#pluginDetail" + i).length > 0)
 					{
 						var pluginId = get_device_state(deviceId, "urn:futzle-com:serviceId:CombinationSwitch1", i + "Plugin", 0);
-						pluginSettings(deviceId, i, pluginId, $("pluginDetail" + i));
+						pluginSettings(deviceId, i, pluginId, jQuery("#pluginDetail" + i));
 					}
 				}
 			}
 		}, 
 		onFailure: function () {
-			$('itemList').innerHTML = 'Failed to get plugins';
+			jQuery('#itemList').html('Failed to get plugins');
 		}
 	});
 }
@@ -88,8 +103,8 @@ function selectPlugin(deviceId, i, count)
 	{
 		html += '<option id="addEntryPluginDefault" value="" selected="selected">Add new...</option>';
 	}
-	html += pluginList.inject("", function(a, plugin) {
-		return a + '<option value="' + plugin["id"] + '"' + (currentPlugin == plugin["id"] ? ' selected="selected"' : '') + '>' + plugin["name"].escapeHTML() + '</option>';
+	jQuery.each(pluginList, function(i, plugin) {
+		html += '<option value="' + plugin["id"] + '"' + (currentPlugin == plugin["id"] ? ' selected="selected"' : '') + '>' + escapeHtml(plugin["name"]) + '</option>';
 	});
 	html += '</select></td><td id="pluginDetail' + i + '">';
 	html += '</td>';
@@ -125,15 +140,15 @@ function pluginSettings(deviceId, i, pluginId, resultElement)
 					output_format: "xml"
 				},
 				onSuccess: function (response) {
-					resultElement.innerHTML = response.responseText;
+					resultElement.html(response.responseText);
 				}, 
 				onFailure: function () {
-					resultElement.innerHTML = 'Failed to get plugins';
+					resultElement.html('Failed to get plugins');
 				}
 			});
 		}, 
 		onFailure: function () {
-			resultElement.innerHTML = 'Failed to get plugins';
+			resultElement.html('Failed to get plugins');
 		}
 	});
 }
@@ -141,21 +156,21 @@ function pluginSettings(deviceId, i, pluginId, resultElement)
 function pluginSelected(deviceId, i, selectElement)
 {
 	warnSave();
-	var pluginId = $F(selectElement);
+	var pluginId = jQuery(selectElement).val();
 	var count = get_device_state(deviceId, "urn:futzle-com:serviceId:CombinationSwitch1", "WatchCount");
 	if (count == undefined) { count = 0; } else { count = count - 0; }
 	set_device_state(deviceId, "urn:futzle-com:serviceId:CombinationSwitch1", i + "Plugin", pluginId, 0);
 	if (i > count)
 	{
-		Array($('addEntryPluginDefault')).invoke("remove");
+		jQuery('#addEntryPluginDefault').remove();
 		set_device_state(deviceId, "urn:futzle-com:serviceId:CombinationSwitch1", "WatchCount", i, 0);
 		var tableElement = selectElement.parentNode.parentNode.parentNode;
 		var newRow = tableElement.insertRow(-1);
 		newRow.setAttribute("id", "pluginRow" + (i+1));
-		newRow.innerHTML = selectPlugin(deviceId, i+1, count+1);
+		jQuery(newRow).html(selectPlugin(deviceId, i+1, count+1));
 	}
 
-	pluginSettings(deviceId, i, pluginId, $("pluginDetail" + i));
+	pluginSettings(deviceId, i, pluginId, jQuery("#pluginDetail" + i));
 
 }
 
@@ -168,5 +183,5 @@ function removeRow(deviceId, i, removeElement)
 
 function warnSave()
 {
-	$('configuration_saveChanges').show();
+	jQuery('#configuration_saveChanges').show();
 }

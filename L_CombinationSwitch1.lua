@@ -183,7 +183,7 @@ function htmlSelectDevice(supportedDevices, selectedDevice, combinationDeviceId,
 	end
 	return "<select onchange=\"warnSave(); set_device_state(" ..
 		combinationDeviceId .. ", '" .. combinationServiceId ..
-		"', '" .. variableName .. "', $F(this), 0);" ..
+		"', '" .. variableName .. "', jQuery(this).val(), 0);" ..
 		(htmlEscape(extraJavaScript) or "") .. "\">" ..
 		table.concat(deviceSelect) .. "</select>"
 end

@@ -72,7 +72,7 @@ function configureSelect(combinationDeviceId, index, state)
 
 	local result = MAIN.template([[
 		~deviceSelectElement~ is
-		<select onchange='warnSave(); set_device_state(~combinationDeviceId~, "~combinationServiceId~", "~index~~INDEX_DAYTIME_VALUE~", $F(this), 0);'>
+		<select onchange='warnSave(); set_device_state(~combinationDeviceId~, "~combinationServiceId~", "~index~~INDEX_DAYTIME_VALUE~", jQuery(this).val(), 0);'>
 			<option value='1' ~DaySelected~>Day</option>
 			<option value='0' ~NightSelected~>Night</option>
 		</select>

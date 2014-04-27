@@ -53,14 +53,14 @@ function configureSelect(combinationDeviceId, index, state)
 
 	local result = MAIN.template([[
 		~deviceSelectElement~ 
-		<select onchange='warnSave(); set_device_state(~combinationDeviceId~, "~combinationServiceId~", "~index~~INDEX_SUNPOSITION_VARIABLE~", $F(this), 0);'>
+		<select onchange='warnSave(); set_device_state(~combinationDeviceId~, "~combinationServiceId~", "~index~~INDEX_SUNPOSITION_VARIABLE~", jQuery(this).val(), 0);'>
 			<option value="Altitude" ~ALTITUDE_SELECTED~>Altitude</option>
 			<option value="Azimuth360" ~AZIMUTH_SELECTED~>Azimuth</option>
 			<option value="Declination" ~DECLINATION_SELECTED~>Declination</option>
 			<option value="RightAscension360" ~RIGHTASCENSION_SELECTED~>Right Ascension</option>
 		</select> is in range
-		<input type="text" size="3" value="~selectedLow~" onchange='warnSave(); set_device_state(~combinationDeviceId~, "~combinationServiceId~", "~index~~INDEX_SUNPOSITION_VALUE_LOW~", $F(this), 0);'>&deg; to
-		<input type="text" size="3" value="~selectedHigh~" onchange='warnSave(); set_device_state(~combinationDeviceId~, "~combinationServiceId~", "~index~~INDEX_SUNPOSITION_VALUE_HIGH~", $F(this), 0);'>&deg;
+		<input type="text" size="3" value="~selectedLow~" onchange='warnSave(); set_device_state(~combinationDeviceId~, "~combinationServiceId~", "~index~~INDEX_SUNPOSITION_VALUE_LOW~", jQuery(this).val(), 0);'>&deg; to
+		<input type="text" size="3" value="~selectedHigh~" onchange='warnSave(); set_device_state(~combinationDeviceId~, "~combinationServiceId~", "~index~~INDEX_SUNPOSITION_VALUE_HIGH~", jQuery(this).val(), 0);'>&deg;
 		]], {
 			deviceSelectElement = deviceSelectElement,
 			combinationDeviceId = combinationDeviceId,

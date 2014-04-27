@@ -46,7 +46,7 @@ function configureSelect(combinationDeviceId, index, state)
 
 	local result = MAIN.template([[
 		~deviceSelectElement~ is
-		<select onchange='warnSave(); set_device_state(~combinationDeviceId~, "~combinationServiceId~", "~index~~INDEX_SWITCH_TRIPPED~", $F(this).substring(0, 1), 0); set_device_state(~combinationDeviceId~, "~combinationServiceId~", "~index~~INDEX_SWITCH_ARMED~", $F(this).substring(1, 2), 0);'>
+		<select onchange='warnSave(); set_device_state(~combinationDeviceId~, "~combinationServiceId~", "~index~~INDEX_SWITCH_TRIPPED~", jQuery(this).val().substring(0, 1), 0); set_device_state(~combinationDeviceId~, "~combinationServiceId~", "~index~~INDEX_SWITCH_ARMED~", jQuery(this).val().substring(1, 2), 0);'>
 			<option value='1x' ~selected1x~>Tripped</option>
 			<option value='0x' ~selected0x~>Not tripped</option>
 			<option value='10' ~selected10~>Tripped while bypassed</option>

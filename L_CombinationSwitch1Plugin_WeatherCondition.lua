@@ -74,7 +74,7 @@ function configureSelect(combinationDeviceId, index, state)
 		"Thunderstorm",
 		"Windy"
 	}
-	local result = deviceSelectElement .. " is <select onchange='warnSave(); set_device_state(" .. combinationDeviceId .. ", \"" .. MAIN.pluginId .. "\", \"" .. index .. INDEX_SWITCH_CONDITION .. "\", $F(this), 0);'>"
+	local result = deviceSelectElement .. " is <select onchange='warnSave(); set_device_state(" .. combinationDeviceId .. ", \"" .. MAIN.pluginId .. "\", \"" .. index .. INDEX_SWITCH_CONDITION .. "\", jQuery(this).val(), 0);'>"
 	for i = 1, #possibleConditions do
 		result = result .. "<option value='" .. possibleConditions[i] .. "'"
 		if (possibleConditions[i] == matchCondition) then

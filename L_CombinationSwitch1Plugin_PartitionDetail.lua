@@ -55,7 +55,7 @@ function configureSelect(combinationDeviceId, index, state)
 		"EntryDelay",
 		"ExitDelay"
 	}
-	local result = deviceSelectElement .. " is in state <select onchange='warnSave(); set_device_state(" .. combinationDeviceId .. ", \"" .. MAIN.pluginId .. "\", \"" .. index .. INDEX_SWITCH_DETAIL .. "\", $F(this), 0);'>"
+	local result = deviceSelectElement .. " is in state <select onchange='warnSave(); set_device_state(" .. combinationDeviceId .. ", \"" .. MAIN.pluginId .. "\", \"" .. index .. INDEX_SWITCH_DETAIL .. "\", jQuery(this).val(), 0);'>"
 	for i = 1, #possibleDetails do
 		result = result .. "<option value='" .. possibleDetails[i] .. "'"
 		if (possibleDetails[i] == matchDetail) then

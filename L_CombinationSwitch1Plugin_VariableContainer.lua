@@ -51,7 +51,7 @@ function configureSelect(combinationDeviceId, index, state)
 	local firstSelected = " selected='selected'"
 	for slot = 1,5 do
 		deviceSelectExtraJS = deviceSelectExtraJS .. "\"<option value='" .. slot .. "'" .. firstSelected ..
-			">\" +" .. "get_device_state($F(this), '" .. VCONTAINER_SERVICE_ID ..
+			">\" +" .. "get_device_state(jQuery(this).val(), '" .. VCONTAINER_SERVICE_ID ..
 			"', 'VariableName" .. slot .. "', 0).escapeHTML()" ..
 			"+ \"</option>\" + "
 		firstSelected = ""
@@ -68,17 +68,17 @@ function configureSelect(combinationDeviceId, index, state)
 
 	local result = MAIN.template([[
 		~deviceSelectElement~ variable 
-		<select id='combiSlot~index~' onchange='warnSave(); set_device_state(~combinationDeviceId~, "~combinationServiceId~", "~index~~INDEX_VCONTAINER_VARIABLE_SLOT~", $F(this), 0);'>
+		<select id='combiSlot~index~' onchange='warnSave(); set_device_state(~combinationDeviceId~, "~combinationServiceId~", "~index~~INDEX_VCONTAINER_VARIABLE_SLOT~", jQuery(this).val(), 0);'>
 			<option ~variable1selected~ value="1">~variableName1~</option>
 			<option ~variable2selected~ value="2">~variableName2~</option>
 			<option ~variable3selected~ value="3">~variableName3~</option>
 			<option ~variable4selected~ value="4">~variableName4~</option>
 			<option ~variable5selected~ value="5">~variableName5~</option>
 		</select>
-                <select onchange='warnSave(); set_device_state(~combinationDeviceId~, "~combinationServiceId~", "~index~~INDEX_VCONTAINER_COMPARISON~", $F(this), 0);'>
+                <select onchange='warnSave(); set_device_state(~combinationDeviceId~, "~combinationServiceId~", "~index~~INDEX_VCONTAINER_COMPARISON~", jQuery(this).val(), 0);'>
                         <option value='eq' ~eqSelected~>is</option>
                 </select>
-		<input type="text" size="15" value="~currentValue~" onchange='warnSave(); set_device_state(~combinationDeviceId~, "~combinationServiceId~", "~index~~INDEX_VCONTAINER_VALUE~", $F(this), 0);'> 
+		<input type="text" size="15" value="~currentValue~" onchange='warnSave(); set_device_state(~combinationDeviceId~, "~combinationServiceId~", "~index~~INDEX_VCONTAINER_VALUE~", jQuery(this).val(), 0);'> 
 		]], {
 			deviceSelectElement = deviceSelectElement,
 			combinationDeviceId = combinationDeviceId,

@@ -46,7 +46,7 @@ function configureSelect(combinationDeviceId, index, state)
 		"HeatOn",
 		"Off"
 	}
-	local result = deviceSelectElement .. " is in mode <select onchange='warnSave(); set_device_state(" .. combinationDeviceId .. ", \"" .. MAIN.pluginId .. "\", \"" .. index .. INDEX_SWITCH_MODE .. "\", $F(this), 0);'>"
+	local result = deviceSelectElement .. " is in mode <select onchange='warnSave(); set_device_state(" .. combinationDeviceId .. ", \"" .. MAIN.pluginId .. "\", \"" .. index .. INDEX_SWITCH_MODE .. "\", jQuery(this).val(), 0);'>"
 	for i = 1, #possibleMode do
 		result = result .. "<option value='" .. possibleMode[i] .. "'"
 		if (possibleMode[i] == matchMode) then
