@@ -37,6 +37,9 @@ function initialize(deviceId)
 		end
 	end
 
+	-- In case last Luup save was while Triggered = 1.
+	luup.variable_set(COMBINATION_SWITCH_SERVICE_ID, "Trigger", 0, DEVICE_ID)
+
 	updateState()
 
 	return true
@@ -177,7 +180,7 @@ function htmlSelectDevice(supportedDevices, selectedDevice, combinationDeviceId,
 			<option value='~d~' ~selected~>~desc~</option>
 		]], {	
 				d = d,
-				desc = htmlEscape(luup.devices[d].description),
+				desc = htmlEscape(luup.devices[d].description .. " (#" .. d .. ")"),
 				selected = (d == tonumber(selectedDevice) and " selected='selected'" or "" ),
 			}))
 	end

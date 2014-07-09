@@ -122,7 +122,7 @@ function pluginSettings(deviceId, i, pluginId, resultElement)
 			combiDevice: deviceId,
 			index: i,
 			rand: Math.random(),
-			output_format: "xml"
+			output_format: "text"
 		},
 		onSuccess: function (response) {
 			var stateJavaScript = response.responseText;
@@ -137,7 +137,7 @@ function pluginSettings(deviceId, i, pluginId, resultElement)
 					index: i,
 					state: state,
 					rand: Math.random(),
-					output_format: "xml"
+					output_format: "text"
 				},
 				onSuccess: function (response) {
 					resultElement.html(response.responseText);
