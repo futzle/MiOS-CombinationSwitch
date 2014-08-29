@@ -28,6 +28,7 @@
             },
             "Position": "0",
             "TabType": "flash",
+            "top_navigation_tab": 1,
             "SceneGroup": [
               {
                 "id": "1",
@@ -69,6 +70,7 @@
                         "text": "Poke"
                     },
                     "Display": {
+                        "Service": "urn:futzle-com:serviceId:CombinationSwitch1",
                         "Top": 20,
                         "Left": 20,
                         "Width": 80,
