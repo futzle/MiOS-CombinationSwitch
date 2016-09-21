@@ -1,5 +1,5 @@
 {
-    "flashicon": "icons\/Binary_Light.png",
+    "default_icon": "binary_light_default.png",
     "doc_url": {
         "doc_language": 1,
         "doc_manual": 1,
@@ -7,16 +7,32 @@
         "doc_platform": 0,
         "doc_page": "devices" 
     },
-    "state_icons": [
-        "Binary_Light_0.png",
-        "Binary_Light_100.png"
+	"state_icons": [
+		{
+			"img": "binary_light_off.png",
+			"conditions": [
+				{
+					"service": "urn:futzle-com:serviceId:CombinationSwitch1",
+					"variable": "Status",
+					"operator": "==",
+					"value": 0,
+					"subcategory_num": 0
+				}
+			]
+		},
+		{
+			"img": "binary_light_on.png",
+			"conditions": [
+				{
+					"service": "urn:upnp-org:serviceId:SwitchPower1",
+					"variable": "Status",
+					"operator": "==",
+					"value": 1,
+					"subcategory_num": 0
+				}
+			]
+		},
     ],
-    "DisplayStatus": {
-		"Service": "urn:futzle-com:serviceId:CombinationSwitch1",
-		"Variable": "Status",
-		"MinValue": "0",
-		"MaxValue": "1"
-    },
     "inScene": "1",
     "x": 2,
     "y": 4,
